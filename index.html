@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+</head>
+<body>
+     <style>
+        .container {
+            text-align: center;
+            margin-top: 30px;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 8px solid #ccc;
+            
+        }
+        h1 {
+            text-align: center;
+        }
+        #text, .b1 {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #qrcode {
+            width: 150px;
+            height: 150px;
+            margin-top: 10px;
+            margin-left: 125px;
+            display: block;
+        }
+        .b1 {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+     </style>
+
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <input  type="text" id="text" placeholder="Enter text or url....">
+        <button class="b1" onclick="generateQrcode()">Generate Qr code</button>
+        <div id="qrcode"></div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function generateQrcode() {
+            const text = document.getElementById("text").value;
+            const qrCodeContainer = document.getElementById("qrcode");
+            qrCodeContainer.innerHTML = "";
+            if (text.trim() !== "") {
+                new QRCode(qrCodeContainer , {text : text , width : 150 , height : 150 });
+
+            }
+        }
+    </script>
+</body>
+</html>
